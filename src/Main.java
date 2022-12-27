@@ -33,6 +33,7 @@ public class Main {
             System.out.println("Please choose a hero class");
             System.out.println("1.Assassin" + "\n2.Berserker" + "\n3.Knight");
         }
+        int test = userInput.nextInt();
 
         if (option==1){
             System.out.println("\nThats great");

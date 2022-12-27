@@ -73,21 +73,21 @@ public class HeroModel {
 
         EnemyModel slime = new EnemyModel("Slime 1", "Slime", 10.0, brokenSpearKey);
 
-        //TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(2);
         System.out.println("Your name is messi an up and coming assassin from a distant unknown tribe " +
                 "\n As a junior in this job occupation you have been given the task to reclaim a rare item that once " +
                 "\n showcased thee tribes superiority in the lost cave");
 
-        // TimeUnit.SECONDS.sleep(5);
+         TimeUnit.SECONDS.sleep(5);
         System.out.println("Now that you know your mission, You bark off on your first adventure in the lost cave.");
 
-        // TimeUnit.SECONDS.sleep(5);
+         TimeUnit.SECONDS.sleep(5);
         System.out.println("\n30 days later.................");
-        // TimeUnit.SECONDS.sleep(5);
+         TimeUnit.SECONDS.sleep(5);
         System.out.println("You locate the enormous cave with obliterated shrines, eminating a menacing aura");
-        // TimeUnit.SECONDS.sleep(5);
+         TimeUnit.SECONDS.sleep(5);
         System.out.println("As walk through the cave, You see an enourmous door with a sword shaped keyhole");
-        // TimeUnit.SECONDS.sleep(5);
+         TimeUnit.SECONDS.sleep(5);
 
         System.out.println("What shall you do? " +
                 "\n1.Open the door" +
@@ -101,15 +101,22 @@ public class HeroModel {
                     "\n1.Open the door" +
                     "\n2.Walk away" +
                     "\n3.Look at the enscription");
+
             if (option == 1) {
                 System.out.println("You try to open the door but its too sturdy to budge");
                 System.out.println("You notice a spear shaped hole that looks like in can unlock the door.");
                 System.out.println("Let me check my inventory");
                 if (!(assassin.getWeaponsInventory().contains(brokenSpearKey))) {
-                    System.out.println("you dont have the brokenSpearKey");
-                    break;
+                    System.out.println("you don't have the brokenSpearKey");
                 }
             }
+            if (option == 3) {
+                System.out.println("You Look at the translation which seems to be an acient language");
+                System.out.println("The key to unlocking this path is of my enemy");
+                System.out.println("Let me check my inventory");
+            }
+        }
+
 
             if (option == 2) {
                 System.out.println("You have decided to walk away");
@@ -122,8 +129,6 @@ public class HeroModel {
             }
 
         }
-
-    }
 
 
     Scanner userInput = new Scanner(System.in);
@@ -147,6 +152,9 @@ public class HeroModel {
         double slimeMucus = 5;
 
         while (slime.getHealthBar() != 0) {
+
+            TimeUnit.SECONDS.sleep(1);
+
             System.out.println("What shall you do? " +
                     "\n1.Fight" +
                     "\n2.Run");
@@ -155,15 +163,23 @@ public class HeroModel {
 
             if (option == 1) {
 
+                TimeUnit.SECONDS.sleep(1);
+
                 System.out.println("You have no inventory so far so you use your fist" +
                         "\n for a light blow of " + punchdamage + " damage");
                 slimeHealth -= punchdamage;
                 slime.setHealthBar(slimeHealth);
+                TimeUnit.SECONDS.sleep(1);
 
                 System.out.println("slime:" + slime.getHealthBar());
+                TimeUnit.SECONDS.sleep(1);
+
                 System.out.println("The slime took a menacing blow ");
+                TimeUnit.SECONDS.sleep(1);
 
                 System.out.println("Now for Slimes turn");
+                TimeUnit.SECONDS.sleep(1);
+
                 System.out.println("The slime has vomited out acidic mucus which hit you for " + slimeMucus + "Damage");
 
                 assassinHealth -= slimeMucus;
@@ -180,8 +196,9 @@ public class HeroModel {
                 System.out.println("You have beaten your first enemy!");
                 TimeUnit.SECONDS.sleep(1);
                 System.out.println(":)");
+                System.out.println("You have obtained a crucial item from the slime");
                 assassin.weaponsInventory.add(slime.getWeaponLoot());
-                System.out.println(assassin.weaponsInventory);
+                System.out.println(assassin.getWeaponsInventory());
             }
         }
     }
