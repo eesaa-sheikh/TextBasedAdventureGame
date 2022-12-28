@@ -75,26 +75,27 @@ public class HeroModel {
 
         TimeUnit.SECONDS.sleep(2);
         System.out.println("Your name is messi an up and coming assassin from a distant unknown tribe " +
-                "\n As a junior in this job occupation you have been given the task to reclaim a rare item that once " +
-                "\n showcased thee tribes superiority in the lost cave");
+                "\nAs a junior in this job occupation you have been given the task to reclaim a rare item that once " +
+                "\nshowcased the tribes superiority in the lost cave");
 
-         TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(5);
         System.out.println("Now that you know your mission, You bark off on your first adventure in the lost cave.");
 
-         TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(5);
         System.out.println("\n30 days later.................");
-         TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(5);
         System.out.println("You locate the enormous cave with obliterated shrines, eminating a menacing aura");
-         TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(5);
         System.out.println("As walk through the cave, You see an enourmous door with a sword shaped keyhole");
-         TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(5);
+
 
         System.out.println("What shall you do? " +
                 "\n1.Open the door" +
                 "\n2.Walk away" +
                 "\n3.Look at the enscription");
-
         int option = userInput.nextInt();
+
         while (option != 2) {
 
             System.out.println("What shall you do? " +
@@ -103,32 +104,102 @@ public class HeroModel {
                     "\n3.Look at the enscription");
 
             if (option == 1) {
+                TimeUnit.SECONDS.sleep(5);
                 System.out.println("You try to open the door but its too sturdy to budge");
+                TimeUnit.SECONDS.sleep(5);
                 System.out.println("You notice a spear shaped hole that looks like in can unlock the door.");
+                TimeUnit.SECONDS.sleep(5);
                 System.out.println("Let me check my inventory");
                 if (!(assassin.getWeaponsInventory().contains(brokenSpearKey))) {
+                    TimeUnit.SECONDS.sleep(5);
                     System.out.println("you don't have the brokenSpearKey");
+
+                } else {
+                    TimeUnit.SECONDS.sleep(5);
+                    System.out.println("You used the BrokenSpearKey to Open the door");
+                    break;
                 }
             }
-            if (option == 3) {
-                System.out.println("You Look at the translation which seems to be an acient language");
-                System.out.println("The key to unlocking this path is of my enemy");
-                System.out.println("Let me check my inventory");
+
+                if (option == 3) {
+                    TimeUnit.SECONDS.sleep(5);
+                    System.out.println("You Look at the translation which seems to be an ancient language");
+                    TimeUnit.SECONDS.sleep(5);
+                    System.out.println("The key to unlocking this path is of my enemy");
+
+
+                }
             }
-        }
 
-
-            if (option == 2) {
-                System.out.println("You have decided to walk away");
-                System.out.println("From the side of your eye, you notice a gelatenous liquid forming in a damp corner....");
-                System.out.println("Drip\nDrip\nDrip");
-                System.out.println("You have encountered a menacing looking slime approaching towards you with " +
+        if (option == 2) {
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("You have decided to walk away");
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("From the side of your eye, you notice a gelatenous liquid forming in a damp corner....");
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("Drip\nDrip\nDrip");
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("You have encountered a menacing looking slime approaching towards you with " +
                         "\nmenacing intent ");
-                System.out.println("The battle has started");
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("The battle has started");
                 battleWithSlime();
+
+
             }
+        TimeUnit.SECONDS.sleep(5);
+        System.out.println("Now that you have The Broken Spear Key, press 1 to progress onto the next room");
+        int advancedOption = userInput.nextInt();
+
+        if (advancedOption == 1){
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("Now that you unlocked the door, The broken spear key vanishes");
+            assassin.weaponsInventory.remove(brokenSpearKey);
+            if(assassin.weaponsInventory.isEmpty()){
+                System.out.println("You enter the second room, twice as big as the previous room." +
+                        "\nThe room has bones of humans and their remains covering the floor and " +
+                        "\nthe entrance to what seems to be adorned with beast skeletons, broken weapons" +
+                        "\nand blood which adorned the door.");
+            }
+            int choice = userInput.nextInt();
+                System.out.println("What shall you do? " +
+                        "\n1.Progress ahead" +
+                        "\n2.Run away" );
+                if (choice == 1){
+                    System.out.println("You muster the courage to approach the door");
+                }
+        }
+
+
+
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     Scanner userInput = new Scanner(System.in);
@@ -196,9 +267,12 @@ public class HeroModel {
                 System.out.println("You have beaten your first enemy!");
                 TimeUnit.SECONDS.sleep(1);
                 System.out.println(":)");
-                System.out.println("You have obtained a crucial item from the slime");
+                System.out.println("You have obtained a crucial item from the slime ");
                 assassin.weaponsInventory.add(slime.getWeaponLoot());
                 System.out.println(assassin.getWeaponsInventory());
+            }
+            if (option ==2){
+                System.out.println("The Slime has blocked your exit Route. You must fight");
             }
         }
     }
