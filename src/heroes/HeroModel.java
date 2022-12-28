@@ -161,14 +161,29 @@ public class HeroModel {
                         "\nthe entrance to what seems to be adorned with beast skeletons, broken weapons" +
                         "\nand blood which adorned the door.");
             }
-            int choice = userInput.nextInt();
                 System.out.println("What shall you do? " +
                         "\n1.Progress ahead" +
                         "\n2.Run away" );
-                if (choice == 1){
-                    System.out.println("You muster the courage to approach the door");
-                }
+
+            int choice = userInput.nextInt();
+
+            if (choice == 1){
+                TimeUnit.SECONDS.sleep(5);
+                System.out.println("You muster the courage to approach the door");
+                } else {
+                TimeUnit.SECONDS.sleep(5);
+                System.out.println("Why are you running away from this crucial test!" +
+                        "\nI thought you wanted prove yourself.");
+            }
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("You slowly progress forward until you hear a deafining " +
+                    "\ngrowl with a dangerous Aura." +
+                    "\nOut of the shadows you see a  dark brown dog with blood foaming from the mouth. ");
+
+            battleWithDog();
+
         }
+
 
 
 
@@ -271,11 +286,107 @@ public class HeroModel {
                 assassin.weaponsInventory.add(slime.getWeaponLoot());
                 System.out.println(assassin.getWeaponsInventory());
             }
-            if (option ==2){
+            if (option == 2) {
                 System.out.println("The Slime has blocked your exit Route. You must fight");
             }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Scanner battleInput = new Scanner(System.in);
+
+        public void battleWithDog() throws InterruptedException {
+            WeaponsInventory brokenSword = new WeaponsInventory("Sword", 15.00, 4.00);
+            WeaponsInventory brokenSpear = new WeaponsInventory("Spear", 20.00, 5.00);
+            WeaponsInventory brokenSpearKey = new WeaponsInventory("Key", 0.00, 0.00);
+            WeaponsInventory TheEmperorsSword = new WeaponsInventory("TheEmporersSword", 9.00, 35.00);
+
+
+            HeroModel assassin = new HeroModel("messi", "assassin", 50.0);
+
+
+            EnemyModel dog = new EnemyModel("dog 1", "Dog", 20.0, brokenSword);
+
+            //Battle Stats
+            double punchdamage = 5;
+            double assassinHealth = assassin.getHealthBar();
+            double dogHealth = 20;
+            double dogBite = 7;
+            double dogAttacksYouRunningAway = 3;
+
+            while (dog.getHealthBar() != 0) {
+
+                TimeUnit.SECONDS.sleep(1);
+
+                System.out.println("What shall you do? " +
+                        "\n1.Fight" +
+                        "\n2.Run");
+                int option = userInput.nextInt();
+
+
+                if (option == 1) {
+
+                    TimeUnit.SECONDS.sleep(1);
+
+                    System.out.println("You have no inventory so far so you use your fist" +
+                            "\n for a light blow of " + punchdamage + " damage");
+                    dogHealth -= punchdamage;
+                    dog.setHealthBar(dogHealth);
+                    TimeUnit.SECONDS.sleep(1);
+
+                    System.out.println("Dog:" + dog.getHealthBar());
+                    TimeUnit.SECONDS.sleep(1);
+
+                    System.out.println("The dog took a substantial blow ");
+                    TimeUnit.SECONDS.sleep(1);
+
+                    System.out.println("Now for Dogs turn");
+                    TimeUnit.SECONDS.sleep(1);
+
+                    System.out.println("The slime has vomited out acidic mucus which hit you for " + dogBite + "Damage");
+
+                    assassinHealth -= dogBite;
+
+                    assassin.setHealthBar(assassinHealth);
+
+                    System.out.println(assassin.getHealthBar() + "\nIt has little effect on you");
+
+                }
+                if (dog.getHealthBar() == 0) {
+                    TimeUnit.SECONDS.sleep(5);
+                    System.out.println("You have defeated the dog");
+                    TimeUnit.SECONDS.sleep(2);
+                    System.out.println("You have beaten your first enemy!");
+                    TimeUnit.SECONDS.sleep(1);
+                    System.out.println(":)");
+                    System.out.println("You have obtained a crucial item from the slime ");
+                    assassin.weaponsInventory.add(dog.getWeaponLoot());
+                    System.out.println(assassin.getWeaponsInventory());
+                }
+                if (option ==2){
+                    System.out.println("The Dog has caught up to you and bit you. You must fight");
+
+                    assassinHealth -= dogAttacksYouRunningAway;
+
+                    assassin.setHealthBar(assassinHealth);
+
+                    System.out.println(assassin.getHealthBar() +" You have to fight the dog ");
+
+                }
+            }
+    }
+
 
 
 
