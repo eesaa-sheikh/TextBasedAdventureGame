@@ -37,7 +37,7 @@ public class PreRequisites {
 
     // Enemy boss model
 
-    BossBattle bossBattle = new BossBattle("Roy Keane", "Legendary Dragon", 15.00,TheEmperorsSword);
+    BossBattle bossBattle = new BossBattle("Roy Keane", "Legendary Dragon", 50.00,TheEmperorsSword);
 
 
 }

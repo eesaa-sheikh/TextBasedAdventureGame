@@ -1,6 +1,8 @@
 package heroes;
 
 import GameScript.Assassin;
+import com.sun.tools.javac.Main;
+import enemies.BossBattle;
 import enemies.EnemyModel;
 import storage.WeaponsInventory;
 
@@ -158,7 +160,7 @@ public class HeroModel {
             if(assassin.weaponsInventory.isEmpty()){
                 System.out.println("You enter the second room, twice as big as the previous room." +
                         "\nThe room has bones of humans and their remains covering the floor and " +
-                        "\nthe entrance to what seems to be adorned with beast skeletons, broken weapons" +
+                        "\nthe gate to what seems to be adorned with beast skeletons, broken weapons" +
                         "\nand blood which adorned the door.");
             }
                 System.out.println("What shall you do? " +
@@ -182,6 +184,56 @@ public class HeroModel {
 
             battleWithDog();
 
+        }
+
+        TimeUnit.SECONDS.sleep(5);
+        System.out.println("After the harrowing Dog experience, You decide to enter the gate, nervously," +
+                "\nyou have sweat driping down your forehead as you can see the physical manifestation of the " +
+                "Mysterious aura eminatting from the gate. You know that is is you last battle to complete this " +
+                "initiation stage.");
+
+        TimeUnit.SECONDS.sleep(5);
+        System.out.println("What shall you do? " +
+                "\n1.Open the door" +
+                "\n2.Run away");
+        int endChoice = userInput.nextInt();
+
+        while (endChoice != 1) {
+
+            if (endChoice== 2){
+
+                TimeUnit.SECONDS.sleep(5);
+                System.out.println("You are soo close and you are running away! You need to this over");
+                System.out.println("\n1.Yes I want to run Away!" +
+                        "\n2.No I want to continue");
+
+                int opChoice = userInput.nextInt();
+                if (opChoice== 2) {
+                    System.out.println("You run away with the tail between your legs. I am so disapointed." +
+                            "\n Never come hear Again.");
+                    break;
+                }
+
+                if (opChoice ==1){
+                    System.out.println("That's more like it!");
+                }
+
+                }
+
+        }
+
+        if (endChoice == 2) {
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("With the remaining courage you muster from the depth of your inner soul," +
+                    "\nyou open the door.");
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("Heavy Breathing.......");
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("Who dares wake me from my Slumber......");
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("You slowly draw your weapon out to engage in combat");
+
+             battleWithBoss();
         }
 
 
@@ -354,7 +406,7 @@ public class HeroModel {
                     System.out.println("Now for Dogs turn");
                     TimeUnit.SECONDS.sleep(1);
 
-                    System.out.println("The slime has vomited out acidic mucus which hit you for " + dogBite + "Damage");
+                    System.out.println("The dog has clawed you for " + dogBite + "Damage");
 
                     assassinHealth -= dogBite;
 
@@ -367,10 +419,10 @@ public class HeroModel {
                     TimeUnit.SECONDS.sleep(5);
                     System.out.println("You have defeated the dog");
                     TimeUnit.SECONDS.sleep(2);
-                    System.out.println("You have beaten your first enemy!");
+                    System.out.println("You have beaten your second enemy!");
                     TimeUnit.SECONDS.sleep(1);
                     System.out.println(":)");
-                    System.out.println("You have obtained a crucial item from the slime ");
+                    System.out.println("You have obtained a crucial item from the Dog ");
                     assassin.weaponsInventory.add(dog.getWeaponLoot());
                     System.out.println(assassin.getWeaponsInventory());
                 }
@@ -384,10 +436,100 @@ public class HeroModel {
                     System.out.println(assassin.getHealthBar() +" You have to fight the dog ");
 
                 }
+
+                }
+
             }
+
+    Scanner bossBattleInput = new Scanner(System.in);
+
+    public void  battleWithBoss() throws InterruptedException {
+                WeaponsInventory brokenSword = new WeaponsInventory("Sword", 15.00, 4.00);
+                WeaponsInventory TheEmperorsSword = new WeaponsInventory("TheEmporersSword", 9.00, 35.00);
+
+
+                HeroModel assassin = new HeroModel("messi", "assassin", 50.0);
+                BossBattle bossBattle = new BossBattle("Roy Keane", "Legendary Dragon", 50.00,TheEmperorsSword);
+
+
+
+                //battle Stats
+                double attackWithSword = 5 + brokenSword.getAttackDamage();
+                double assassinHealth = assassin.getHealthBar();
+                double bossHealth = bossBattle.getHealthBar();
+                double royKeaneSlideTackle = 10;
+                double bossBattleStopsYouFromLeaving = 10;
+
+        while (bossBattle.getHealthBar() != 0) {
+
+            TimeUnit.SECONDS.sleep(1);
+
+            System.out.println("What shall you do? " +
+                    "\n1.Fight" +
+                    "\n2.Run");
+            int option = userInput.nextInt();
+
+
+            if (option == 1) {
+
+                TimeUnit.SECONDS.sleep(1);
+
+                System.out.println("You have no inventory so far so you use your fist" +
+                        "\n for a light blow of " + attackWithSword + " damage");
+                bossHealth -= attackWithSword;
+                bossBattle.setHealthBar(bossHealth);
+                TimeUnit.SECONDS.sleep(1);
+
+                System.out.println("Dog:" + bossBattle.getHealthBar());
+                TimeUnit.SECONDS.sleep(1);
+
+                System.out.println("Roy Keane took a substantial blow ");
+                TimeUnit.SECONDS.sleep(1);
+
+                System.out.println("Now for Dogs turn");
+                TimeUnit.SECONDS.sleep(1);
+
+                System.out.println("Roy keane stares you down, running towards you for a devastating slide tackle " + royKeaneSlideTackle + " Damage");
+
+                assassinHealth -= royKeaneSlideTackle;
+
+                assassin.setHealthBar(assassinHealth);
+
+                System.out.println(assassin.getHealthBar() + "\nIt has a substancial effect on you");
+
+            }
+            if (bossBattle.getHealthBar() == 0) {
+                TimeUnit.SECONDS.sleep(5);
+                System.out.println("You have defeated the the Final boss");
+                TimeUnit.SECONDS.sleep(2);
+                System.out.println("You have beaten the boss of this cave!");
+                TimeUnit.SECONDS.sleep(1);
+                System.out.println(":)");
+                System.out.println("You have obtained the key item from a  ");
+                assassin.weaponsInventory.add(bossBattle.getRareweaponLoot());
+                System.out.println(assassin.getWeaponsInventory());
+            }
+            if (option ==2){
+                System.out.println("The Dog has caught up to you and bit you. You must fight");
+
+                assassinHealth -= bossBattleStopsYouFromLeaving;
+
+                assassin.setHealthBar(assassinHealth);
+
+                System.out.println(assassin.getHealthBar() +" You have to fight Roy Keane or he will cuss you out. ");
+
+            }
+
+        }
+
     }
 
 
 
 
-    }
+            }
+
+
+
+
+
